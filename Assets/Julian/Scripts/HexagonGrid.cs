@@ -20,7 +20,6 @@ public class HexagonGrid : MonoBehaviour
     [SerializeField]
     private int gridHeight = 3;
 
-    
     void Start()
     {
         hexHeight += gap;

@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+
     [SerializeField]
     private float movementSpeed = 1f;
     [SerializeField, Tooltip("The lower the value, the more the camera 'slides' after releasing the button")]
@@ -77,9 +92,10 @@ public class CameraController : MonoBehaviour
         cam.localPosition = Vector3.Lerp(cam.localPosition, zoomPos, Time.deltaTime * zoomSlidingEffect);
     }
 
-    void MoveCameraToObject(GameObject targetObject)
+    public void MoveCameraToObject(Vector3 targetPosition)
     {
-        Vector3 targetObjPosition = targetObject.transform.position;
+        newPosition = targetPosition;
+            //Vector3.Lerp(gameObject.transform.position, targetPosition, Time.deltaTime * 3);
         
     }
 }

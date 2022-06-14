@@ -50,6 +50,9 @@ public class CameraController : MonoBehaviour
 
     Vector3 newPosition;
 
+    Vector3 dragStartPosition;
+    Vector3 dragCurrentPosition;
+
     void Start()
     {
         newPosition = transform.position;
@@ -90,6 +93,29 @@ public class CameraController : MonoBehaviour
             zoomPos.z = Mathf.Clamp(zoomPos.z, -maxZoom, -minZoom);
         }
         cam.localPosition = Vector3.Lerp(cam.localPosition, zoomPos, Time.deltaTime * zoomSlidingEffect);
+
+        if(Input.GetMouseButtonDown(2))
+        {
+            Plane plane = new Plane(Vector3.up, Vector3.zero);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            float entry;
+            if(plane.Raycast(ray, out entry))
+            {
+                dragStartPosition = ray.GetPoint(entry);
+            }
+        }
+
+        if(Input.GetMouseButton(2))
+        {
+            Plane plane = new Plane(Vector3.up, Vector3.zero);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            float entry;
+            if(plane.Raycast(ray, out entry))
+            {
+                dragCurrentPosition = ray.GetPoint(entry);
+                newPosition = transform.position + dragStartPosition - dragCurrentPosition;
+            }
+        }
     }
 
     public void MoveCameraToObject(Vector3 targetPosition)

@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class HexagonGrid : MonoBehaviour
 {
+    public static HexagonGrid instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     Vector3 startPos = Vector3.zero;
-    GameObject[,] hexagons;
+    public GameObject[,] hexagons;
     
     [SerializeField]
     private float hexWidth = 1f;
@@ -14,7 +27,7 @@ public class HexagonGrid : MonoBehaviour
     [SerializeField]
     private float gap = 0;
     [SerializeField]
-    private GameObject Hexagon;
+    private GameObject HexagonObj;
     [SerializeField]
     private int gridLength = 3;
     [SerializeField]
@@ -35,7 +48,7 @@ public class HexagonGrid : MonoBehaviour
         {
             for (int y = 0; y < gridLength; y++)
             {
-                GameObject newHexagon = Instantiate(Hexagon, Vector3.zero, Quaternion.identity);
+                GameObject newHexagon = Instantiate(HexagonObj, Vector3.zero, Quaternion.identity);
                 newHexagon.transform.position = new Vector3(x * hexHeight - (hexHeight/4) * x, 0, y * hexWidth);
                 hexagons[x,y] = newHexagon;
                 if(x % 2 != 0)
@@ -43,6 +56,8 @@ public class HexagonGrid : MonoBehaviour
                     newHexagon.transform.position = new Vector3(x * hexHeight - (hexHeight/4) * x, 0, y * hexWidth + hexWidth/2);
                 }
                 newHexagon.name = "Hexagon" + x + "|" + y;
+                newHexagon.GetComponent<Hexagon>().x = x;
+                newHexagon.GetComponent<Hexagon>().y = y;
             }   
         }
     }

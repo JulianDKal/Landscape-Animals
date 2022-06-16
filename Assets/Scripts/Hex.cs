@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-class Hex
+public class Hex
 {
 
     public Hex(int q, int r, int s)

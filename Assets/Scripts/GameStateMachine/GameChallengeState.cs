@@ -12,15 +12,16 @@ public class GameChallengeState : GameBaseState
         - Move back to previously selected animal
     */
 
+    public GameChallengeState(GameStateMachine gsm) : base(gsm) {}
 
     // run at the start of the state
-    public override void EnterState(GameStateMachine gsm)
+    public override void EnterState()
     {
 
     }
 
     // run every frame during the state
-    public override void UpdateState(GameStateMachine gsm)
+    public override void UpdateState()
     {
 
     }

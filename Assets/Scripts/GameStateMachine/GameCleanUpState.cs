@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameCleanUpState : GameBaseState
@@ -10,14 +12,15 @@ public class GameCleanUpState : GameBaseState
         - Switch to InputState
     */
 
-    // run at the start of the state
-    public override void EnterState(GameStateMachine gsm)
-    {
+    public GameCleanUpState(GameStateMachine gsm) : base(gsm) {}
 
+    // run at the start of the state
+    public override void EnterState()
+    {
     }
 
     // run every frame during the state
-    public override void UpdateState(GameStateMachine gsm)
+    public override void UpdateState()
     {
 
     }

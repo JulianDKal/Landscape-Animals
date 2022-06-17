@@ -15,20 +15,22 @@ public class GameInputState : GameBaseState
         - OnMouseDown and OnMouseEnter functionality can be implemented in Animal itself
     */ 
     private Transform currentSelection;
+    
+    public GameInputState(GameStateMachine gsm) : base(gsm) {}
 
     // run at the start of the state
-    public override void EnterState(GameStateMachine gsm)
+    public override void EnterState()
     {
-
+        gsm.AnimalManager.MakeSelectable();
     }
 
     // run every frame during the state
-    public override void UpdateState(GameStateMachine gsm)
+    public override void UpdateState()
     {
-        SelectObjects(gsm);
+        SelectObjects();
     }
 
-    void SelectObjects(GameStateMachine gsm)
+    void SelectObjects()
     {
         string selectableTag = "Selectable";
 

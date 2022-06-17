@@ -762,6 +762,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d7e8f394867074695b88043606aa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridInstObject: {fileID: 461354777}
+  AnimalManagerObject: {fileID: 186095185}
   defaultMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 2fcbee0edfc2cd1428ce4d7fb680ee0a, type: 2}
 --- !u!4 &2072665749

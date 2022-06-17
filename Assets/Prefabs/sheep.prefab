@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 3417197833512299499}
   - component: {fileID: 1784420262825108558}
   - component: {fileID: 4550746203819856004}
-  - component: {fileID: -8967053445163799264}
+  - component: {fileID: 5577540655029461527}
   - component: {fileID: 2391660326712598645}
   m_Layer: 0
   m_Name: sheep
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-8967053445163799264
+--- !u!65 &5577540655029461527
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

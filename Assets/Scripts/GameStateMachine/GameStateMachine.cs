@@ -10,6 +10,10 @@ public class GameStateMachine : MonoBehaviour
     GameBaseState ChallengeState = new GameChallengeState();
     GameBaseState CleanUpState = new GameCleanUpState();
 
+    [SerializeField]
+    public Material defaultMaterial;
+    [SerializeField]
+    public Material highlightMaterial;
     
     void Start()
     {

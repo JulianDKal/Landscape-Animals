@@ -5,23 +5,39 @@ using System.Linq;
 
 public class Hexagon : MonoBehaviour
 {
-    public int x;
-    public int y;
+    public int q;
+    public int r;
+
+    Vector2[] directionVectors = new Vector2[]
+    {
+        new Vector2(+1, 0), new Vector2(+1, -1), new Vector2(0, -1),
+        new Vector2(-1, 0), new Vector2(-1, +1), new Vector2(0, +1)
+    };
 
     private void OnMouseDown()
     {
-        Debug.Log(x + "," + y);
+        GetNeighbours();
         CameraController.instance.MoveCameraToObject(gameObject.transform.position);
     }
 
     public List<GameObject> GetNeighbours()
     {
-        List<GameObject> neighbours = new List<GameObject>();
-        //gets the gameobject at the given ID
-        if(HexagonGrid.instance.hexagons.GetValue(x,y) != null)
-        {
+        Vector2 qr = new Vector2(q, r);
 
+        List<GameObject> neighbours = new List<GameObject>();
+        foreach (Vector2 vector in directionVectors)
+        {
+            Vector2 addedVector = qr + vector;
+            if (addedVector.x >= 0 && addedVector.y >= 0 )
+            {
+                if (HexagonGrid.instance.hexagons[(int)addedVector.x, (int)addedVector.y] != null)
+                {
+                    neighbours.Add(HexagonGrid.instance.hexagons[(int)addedVector.x, (int)addedVector.y]);
+                }
+            }
+            
         }
+        Debug.Log(neighbours.Count);
         return neighbours;
     }
 }

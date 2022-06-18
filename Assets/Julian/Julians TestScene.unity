@@ -158,7 +158,7 @@ MonoBehaviour:
   HexagonObj: {fileID: 9124293962543181557, guid: 66cc93a4704ced24683defae4ca43bbf, type: 3}
   gridLength: 7
   gridHeight: 7
-  HexagonGridSize: 3
+  HexagonGridSize: 4
 --- !u!4 &461354779
 Transform:
   m_ObjectHideFlags: 0

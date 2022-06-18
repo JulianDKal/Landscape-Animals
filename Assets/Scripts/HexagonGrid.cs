@@ -58,8 +58,8 @@ public class HexagonGrid : MonoBehaviour
                     newHexagon.transform.position = new Vector3(-x * hexWidth + (hexWidth/4) * x, 0, y * hexHeight + hexHeight/2);
                 }
                 newHexagon.name = "Hexagon" + x + "|" + y;
-                newHexagon.GetComponent<Hexagon>().x = x;
-                newHexagon.GetComponent<Hexagon>().y = y;
+                newHexagon.GetComponent<Hexagon>().q = x;
+                newHexagon.GetComponent<Hexagon>().r = y;
             }   
         }
     }
@@ -69,6 +69,7 @@ public class HexagonGrid : MonoBehaviour
 
     void CreateHexShapedGrid()
     {
+        hexagons = new GameObject[HexagonGridSize * 2 + 2, HexagonGridSize * 2 + 2];
         List<Hex> hexes = new List<Hex>();
         for (int q = -HexagonGridSize; q <= HexagonGridSize; q++)
         {
@@ -91,8 +92,11 @@ public class HexagonGrid : MonoBehaviour
         {
             Vector3 position = HexPosition(hex);
             GameObject newHexagon = Instantiate(HexagonObj, position, Quaternion.identity);
-            newHexagon.GetComponent<Hexagon>().x = hex.q;
-            newHexagon.GetComponent<Hexagon>().y = hex.r;
+            //The hex class is used for instantiating the grid. In the Hexagon class, the IDs of the tiles are stored with the gridsize added because an array couldn't handle 
+            //the negative values.
+            newHexagon.GetComponent<Hexagon>().q = hex.q + HexagonGridSize;
+            newHexagon.GetComponent<Hexagon>().r = hex.r + HexagonGridSize;
+            hexagons[hex.q + HexagonGridSize, hex.r + HexagonGridSize] = newHexagon;
         }
     }
 

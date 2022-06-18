@@ -32,6 +32,8 @@ public class HexagonGrid : MonoBehaviour
     private int gridLength = 3;
     [SerializeField]
     private int gridHeight = 3;
+    [SerializeField, Tooltip("If true, the Hexagons get instantiated with a random rotation. Otherwise, they always have the same rotation.")]
+    private bool haveRandomRotation = true;
 
     void Start()
     {
@@ -91,7 +93,7 @@ public class HexagonGrid : MonoBehaviour
         foreach (Hex hex in hexes)
         {
             Vector3 position = HexPosition(hex);
-            GameObject newHexagon = Instantiate(HexagonObj, position, Quaternion.identity);
+            GameObject newHexagon = Instantiate(HexagonObj, position, HexagonRotation());
             //The hex class is used for instantiating the grid. In the Hexagon class, the IDs of the tiles are stored with the gridsize added because an array couldn't handle 
             //the negative values.
             newHexagon.GetComponent<Hexagon>().q = hex.q + HexagonGridSize;
@@ -107,5 +109,11 @@ public class HexagonGrid : MonoBehaviour
         position.x = hexWidth * 3/4  * (                   3 / 2 * hex.r);
 
         return position;
+    }
+
+    Quaternion HexagonRotation()
+    {
+        if (!haveRandomRotation) return Quaternion.identity;
+        else return Quaternion.Euler(0, Random.Range(0, 6) * 60, 0);
     }
 }

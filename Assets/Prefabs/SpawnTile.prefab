@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7948504790900589151}
   - component: {fileID: -315445701488645477}
   m_Layer: 0
-  m_Name: baseHexagon
+  m_Name: SpawnTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

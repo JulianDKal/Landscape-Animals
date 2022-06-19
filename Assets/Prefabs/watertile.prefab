@@ -143,7 +143,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ea66d3ba3c5ac7d498707e8c9e54524f, type: 2}
+  - {fileID: 2100000, guid: 8aaa66d84e5e3734c9d80569abe197e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,14 +184,14 @@ MonoBehaviour:
   intersectionEffectsExpanded: 0
   planarReflectionsExpanded: 0
   causticsExpanded: 0
-  reflectionStrength: 0
-  reflectionFresnel: 1
-  causticsStrength: 0
-  causticsTexture: {fileID: 0}
-  causticsSplit: 0
-  causticsSpeed: 0
-  causticsScale: 0
-  causticsShadowMask: 0
+  reflectionStrength: 0.82
+  reflectionFresnel: 2.5
+  causticsStrength: 2.09
+  causticsTexture: {fileID: 2800000, guid: f2c40b951cee11943a1f6d5ec1b42f2c, type: 3}
+  causticsSplit: 0.318
+  causticsSpeed: 0.219
+  causticsScale: 2.41
+  causticsShadowMask: 1
   causticsLightMatrix:
     e00: 0
     e01: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
     e32: 0
     e33: 0
   useLegacyCaustics: 0
-  causticsDepth: 0
+  causticsDepth: 0.6
   useColorGradient: 0
   colorGradient:
     serializedVersion: 2
@@ -242,20 +242,20 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
-  shallowColor: {r: 0, g: 0.6313726, b: 1, a: 1}
-  deepColor: {r: 0.19842473, g: 0.6137471, b: 0.8584906, a: 1}
-  colorDepth: 0.97
-  horizonColor: {r: 0, g: 0.22745094, b: 0.8, a: 1}
+  shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
+  deepColor: {r: 0.030215396, g: 0.4730749, b: 0.9150943, a: 1}
+  colorDepth: 0.65
+  horizonColor: {r: 0, g: 0.22740677, b: 0.8, a: 1}
   horizonDistance: 20
-  shoreFade: 0
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30196074, a: 0}
+  shoreFade: 1
+  shoreColor: {r: 1, g: 1, b: 1, a: 0}
   shoreStrength: 0
-  shoreBlend: 0
+  shoreBlend: 1
   shoreDepth: 0
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0, g: 0, b: 0, a: 0}
+  underwaterColor: {r: 0.20387965, g: 0.30975965, b: 0.517647, a: 0}
   underwaterColorStrength: 0
-  underwaterRefractionStrength: 0
+  underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
   surfaceFoamSampling: {x: 0.62, y: 0}
   surfaceFoamCutoff: 0.62
@@ -263,57 +263,57 @@ MonoBehaviour:
   surfaceFoamBlend: 1
   surfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.3215686}
   surfaceFoamColor2: {r: 1, g: 1, b: 1, a: 0.7294118}
-  surfaceFoamMovement: {x: 1, y: 0, z: 0.47, w: 0.01}
-  surfaceFoamDirection1: 1
+  surfaceFoamMovement: {x: 0.7, y: 0, z: 0.47, w: 0.01}
+  surfaceFoamDirection1: 0.7
   surfaceFoamDirection2: 0.47
   surfaceFoamSpeed1: 0
   surfaceFoamSpeed2: 0.01
-  surfaceFoamTilingAndOffset: {x: -1, y: -1, z: 0.37, w: 0.29}
+  surfaceFoamTilingAndOffset: {x: -1, y: -1, z: 0.57, w: 0.22}
   surfaceFoamOffsetX: -1
   surfaceFoamOffsetY: -1
-  surfaceFoamScale1: 0.37
-  surfaceFoamScale2: 0.29
-  enableSurfaceFoam: 1
+  surfaceFoamScale1: 0.57
+  surfaceFoamScale2: 0.22
+  enableSurfaceFoam: 0
   surfaceFoamHeightMask: 0
   surfaceFoamHeightMaskSmoothness: 0
   enableHeightMask: 0
-  foamShadowStrength: 0
-  foamShadowDepth: 0
-  surfaceFoamShadowProjection: 0
-  intersectionFoamShadowProjection: 0
-  foamMovement: 0
-  intersectionFoamDepth: 0.22
-  intersectionFoamTexture: {fileID: 2800000, guid: ab507ff7ff37d954da98b07bf0bb152e, type: 3}
+  foamShadowStrength: 0.45
+  foamShadowDepth: 10
+  surfaceFoamShadowProjection: 15
+  intersectionFoamShadowProjection: 4.6
+  foamMovement: 1
+  intersectionFoamDepth: 0.76
+  intersectionFoamTexture: {fileID: 2800000, guid: 772031b03d9d46e4ab03e15c8e17718c, type: 3}
   intersectionFoamColor: {r: 1, g: 1, b: 1, a: 1}
   intersectionFoamMovement: {x: 0, y: 0}
   intersectionFoamDirection: 0
   intersectionFoamSpeed: 0
-  intersectionFoamScale: 0.21
-  intersectionFoamSampling: {x: 0, y: 0}
-  intersectionFoamCutoff: 0.02
-  intersectionFoamDistortion: 1.09
+  intersectionFoamScale: 0.19
+  intersectionFoamSampling: {x: 1, y: 0}
+  intersectionFoamCutoff: 1
+  intersectionFoamDistortion: 0
   enableIntersectionEffects: 1
-  intersectionFoamBlend: 0
+  intersectionFoamBlend: 1
   intersectionWaterBlend: 0
-  shoreFoamSpeed: 0
-  shoreFoamWidth: 0
-  shoreFoamFrequency: 0
-  shoreFoamBreakupStrength: 0
-  shoreFoamBreakupScale: 0
+  shoreFoamSpeed: -2.5
+  shoreFoamWidth: 0.6
+  shoreFoamFrequency: 22.6
+  shoreFoamBreakupStrength: 1.13
+  shoreFoamBreakupScale: 31.2
   lighting: 0
-  lightingSmoothness: 0
-  lightingSpecularColor: {r: 0, g: 0, b: 0, a: 0}
+  lightingSmoothness: 1
+  lightingSpecularColor: {r: 1, g: 1, b: 1, a: 0}
   lightingDiffuseColor: {r: 0, g: 0, b: 0, a: 0}
-  lightingHardness: 0
-  normalsTexture: {fileID: 0}
-  normalsMovement: {x: 0.04, y: 0.36}
-  normalsStrength: 0
-  normalsScale: 0.36
+  lightingHardness: 1
+  normalsTexture: {fileID: 2800000, guid: a41da5f5671718b47bbc71e9ef691103, type: 3}
+  normalsMovement: {x: 0.04, y: 2}
+  normalsStrength: 0.29
+  normalsScale: 2
   normalsSpeed: 0.04
-  refractionStrength: 0.017
-  waveVisuals: {x: 0.055, y: 0.5, z: 1.38}
-  waveSteepness: 0.055
-  waveLength: 0.5
+  refractionStrength: 0.022
+  waveVisuals: {x: 0, y: 7.9, z: 1.38}
+  waveSteepness: 0
+  waveLength: 7.9
   waveSpeed: 1.38
   waveDirections: {x: 0, y: 0.64, z: 1, w: 0.33}
   waveDirection1: 0
@@ -322,11 +322,11 @@ MonoBehaviour:
   waveDirection4: 0.33
   waterUVs: 1
   hideComponents: 0
-  enableFoamShadows: 0
+  enableFoamShadows: 1
   enableRefraction: 0
   meshRenderer: {fileID: 0}
   meshFilter: {fileID: 0}
-  material: {fileID: 2100000, guid: ea66d3ba3c5ac7d498707e8c9e54524f, type: 2}
+  material: {fileID: 2100000, guid: 8aaa66d84e5e3734c9d80569abe197e6, type: 2}
 --- !u!1 &7693965805357486356
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8278744412842720691}
+  - component: {fileID: 6641939751576741190}
   m_Layer: 0
   m_Name: watertile
   m_TagString: Untagged
@@ -611,3 +612,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6641939751576741190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768458458842081033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567e9bbd86fd3ca419ace25d3b7437bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  q: 0
+  r: 0

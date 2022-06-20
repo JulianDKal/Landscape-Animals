@@ -16,8 +16,7 @@ public class HexagonGrid : MonoBehaviour
             instance = this;
         }
     }
-
-    Vector3 startPos = Vector3.zero;
+    
     public GameObject[,] hexagons;
     
     [SerializeField]
@@ -128,6 +127,17 @@ public class HexagonGrid : MonoBehaviour
             Destroy(hexagons[inGridPosition.x, inGridPosition.y]);
             GameObject newSpawnTile = Instantiate(spawnTile, position, Quaternion.identity);
             hexagons[inGridPosition.x, inGridPosition.y] = newSpawnTile;
+            newSpawnTile.GetComponent<Hexagon>().tileType = TileTypes.SpawnTile;
         }
+    }
+    
+    public enum TileTypes
+    {
+        Forest,
+        Grasslands,
+        Water,
+        Mountains,
+        SpawnTile,
+        Empty
     }
 }

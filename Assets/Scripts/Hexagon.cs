@@ -8,7 +8,9 @@ public class Hexagon : MonoBehaviour
     public int q;
     public int r;
 
-    Vector2[] directionVectors = new Vector2[]
+    public HexagonGrid.TileTypes tileType = HexagonGrid.TileTypes.Empty;
+
+    readonly Vector2[] directionVectors = new Vector2[]
     {
         new Vector2(+1, 0), new Vector2(+1, -1), new Vector2(0, -1),
         new Vector2(-1, 0), new Vector2(-1, +1), new Vector2(0, +1)

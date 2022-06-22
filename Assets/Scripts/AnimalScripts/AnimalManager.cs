@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
+    public static AnimalManager instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+
     public GameObject AnimalPrefab; // animal available to instantiate
     private List<GameObject> animals; // reference to instantiated animals
 

@@ -21,7 +21,7 @@ public class GameInputState : GameBaseState
     // run at the start of the state
     public override void EnterState()
     {
-        gsm.AnimalManager.MakeSelectable();
+        AnimalManager.instance.MakeSelectable();
     }
 
     // run every frame during the state

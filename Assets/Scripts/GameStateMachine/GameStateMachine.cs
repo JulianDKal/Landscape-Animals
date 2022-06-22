@@ -5,34 +5,40 @@ using UnityEngine;
 public class GameStateMachine : MonoBehaviour
 {
     GameBaseState currentState;
-    GameBaseState InputState = new GameInputState();
-    GameBaseState MoveState = new GameMoveState();
-    GameBaseState ChallengeState = new GameChallengeState();
-    GameBaseState CleanUpState = new GameCleanUpState();
+    
+    //all managers and systems references 
+    public GameObject GridInstObject;
+    public GameObject AnimalManagerObject;
+    public HexagonGrid HexGrid {get; set;}
+    public AnimalManager AnimalManager {get; set;}
 
+    public Material defaultMaterial;
+    public Material highlightMaterial;
     
     void Start()
     {
         // might need another state for setup
-        currentState = InputState;
+        currentState = new GameInputState(this);
+        HexGrid = GridInstObject.GetComponent<HexagonGrid>();
+        AnimalManager = AnimalManagerObject.GetComponent<AnimalManager>();
 
-        currentState.EnterState(this);
+        currentState.EnterState();
     }
 
     
     void Update()
     {
         // runs every frame
-        currentState.UpdateState(this);
+        currentState.UpdateState();
     }
 
     
     public void SwitchState(GameBaseState newState)
     {
-        //currentState.ExitState(this);
+        //currentState.ExitState();
 
         currentState = newState;
 
-        newState.EnterState(this);
+        newState.EnterState();
     }
 }

@@ -11,14 +11,16 @@ public class GameMoveState : GameBaseState
         - Switch to ChallengeState
     */
 
+    public GameMoveState(GameStateMachine gsm) : base(gsm) {}
+
     // run at the start of the state
-    public override void EnterState(GameStateMachine gsm)
+    public override void EnterState()
     {
 
     }
 
     // run every frame during the state
-    public override void UpdateState(GameStateMachine gsm)
+    public override void UpdateState()
     {
 
     }

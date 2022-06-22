@@ -18,7 +18,7 @@ public class GameStateMachine : MonoBehaviour
     void Start()
     {
         // might need another state for setup
-        currentState = new GameCleanUpState(this);
+        currentState = new GameInputState(this);
         HexGrid = GridInstObject.GetComponent<HexagonGrid>();
         AnimalManager = AnimalManagerObject.GetComponent<AnimalManager>();
 

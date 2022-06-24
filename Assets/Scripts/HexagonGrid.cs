@@ -116,4 +116,9 @@ public class HexagonGrid : MonoBehaviour
         if (!haveRandomRotation) return Quaternion.identity;
         else return Quaternion.Euler(0, Random.Range(0, 6) * 60, 0);
     }
+
+    public GameObject GetHexagon(int q, int r)
+    {
+        return hexagons[q, r];
+    }
 }

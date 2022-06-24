@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class AnimalManager : MonoBehaviour
 {
@@ -18,30 +19,46 @@ public class AnimalManager : MonoBehaviour
     }
 
 
-    public GameObject AnimalPrefab; // animal available to instantiate
+    public GameObject AnimalPrefab; // animals available to instantiate
     private List<GameObject> animals; // reference to instantiated animals
 
     // hardcoded for now
     private const float hexWidth = 13.64f;
-    private const float hexHeight = 1.5f;
+    private const float hexHeight = 1.9f;
     
 
     void Start()
     {
         animals = new List<GameObject>();
-        Spawn(AnimalPrefab);
+        StartCoroutine(SpawnAt(AnimalPrefab, 0, 4));
     }
 
-    void Spawn(GameObject prefab)
+
+    public IEnumerator SpawnAt(GameObject prefab, Hexagon hex)
     {
-        GameObject newAnimal;
-        Hex location = new Hex(1, 1, -2);
+        //probably should check if given hex belongs to the grid
+        yield return new WaitUntil(() => HexagonGrid.instance.hexagons != null);
+
         Vector3 animalSize = prefab.GetComponent<Renderer>().bounds.size;
         
-        newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
-        newAnimal.transform.position = AnimalPosition(location, animalSize.y);
+        GameObject newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        newAnimal.transform.parent = hex.transform;
+        newAnimal.transform.position += Vector3.up * (animalSize.y + hexHeight) / 2;
 
-        newAnimal.GetComponent<Animal>().Location = location;
+        animals.Add(newAnimal);
+    }
+
+
+    public IEnumerator SpawnAt(GameObject prefab, int q, int r)
+    {
+        yield return new WaitUntil(() => HexagonGrid.instance.hexagons != null);
+
+        Vector3 animalSize = prefab.GetComponent<Renderer>().bounds.size;
+        GameObject hex = HexagonGrid.instance.GetHexagon(q, r);
+        
+        GameObject newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        newAnimal.transform.parent = hex.transform;
+        newAnimal.transform.position += Vector3.up * (animalSize.y + hexHeight) / 2;
 
         animals.Add(newAnimal);
     }
@@ -68,6 +85,7 @@ public class AnimalManager : MonoBehaviour
         }
     }
 
+    /*
     private Vector3 AnimalPosition(Hex location, float animalHeight)
     {
         Vector3 position = Vector3.zero;
@@ -78,4 +96,5 @@ public class AnimalManager : MonoBehaviour
 
         return position;
     }
+    */
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     // current location on a grid
-    public Hex Location { get; set; }
+    public GameObject hex;
 
     // type of landscape it creates
     // initial location?

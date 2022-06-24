@@ -6,8 +6,10 @@ public class GameStateMachine : MonoBehaviour
 {
     GameBaseState currentState;
     
+    public GameObject selectedObject;
     public Material defaultMaterial;
     public Material highlightMaterial;
+    public Material selectMaterial;
     
     void Start()
     {

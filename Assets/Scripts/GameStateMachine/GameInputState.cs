@@ -14,6 +14,7 @@ public class GameInputState : GameBaseState
         Note: user might deselect (e.g. by clicking on empty tile), which we could achieve by re-entering InputState.
         - OnMouseDown and OnMouseEnter functionality can be implemented in Animal itself
     */ 
+    private Transform currentHover;
     private Transform currentSelection;
     
     public GameInputState(GameStateMachine gsm) : base(gsm) {}
@@ -27,16 +28,17 @@ public class GameInputState : GameBaseState
     // run every frame during the state
     public override void UpdateState()
     {
-        SelectObjects();
+        HoverOverObjects();
+        SelectObject();
     }
 
-    void SelectObjects()
+    void HoverOverObjects()
     {
         string selectableTag = "Selectable";
 
-        if(currentSelection != null)
+        if(currentHover != null)
         {
-            var selectionRenderer = currentSelection.GetComponent<Renderer>();
+            var selectionRenderer = currentHover.GetComponent<Renderer>();
             selectionRenderer.material = gsm.defaultMaterial;
         }
 
@@ -53,9 +55,28 @@ public class GameInputState : GameBaseState
                 if(selectionRenderer != null)
                 {
                     selectionRenderer.material = gsm.highlightMaterial;
-                    currentSelection = selection;
+                    currentHover = selection;
                 }
             }
         }
     }
+
+    void SelectObject()
+    {
+        if(currentHover != null && Input.GetMouseButtonDown(0))
+        {
+            var selectionRenderer = currentHover.GetComponent<Renderer>();
+
+            selectionRenderer.material = gsm.selectMaterial;
+            currentSelection = currentHover;
+            currentHover = null;
+
+            AnimalManager.instance.MakeUnselectable();
+        }
+        else if(Input.GetMouseButtonDown(0))
+        {
+
+        }
+    }
+
 }

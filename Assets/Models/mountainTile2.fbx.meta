@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: dc36bc5254e73e9489aa16326c7a9aa6
+guid: 1a49a2426489d874da4b46df28f171ca
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
   externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -37,7 +37,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
+    useSRGBMaterialColor: 0
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1

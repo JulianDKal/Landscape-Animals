@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using Random = UnityEngine.Random;
 
 public class HexagonGrid : MonoBehaviour
 {
@@ -16,7 +19,15 @@ public class HexagonGrid : MonoBehaviour
             instance = this;
         }
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartCoroutine("CreateHexShapedGrid");
+        }
+    }
+
     public GameObject[,] hexagons;
     
     [SerializeField]
@@ -40,8 +51,8 @@ public class HexagonGrid : MonoBehaviour
     {
         hexHeight += gap;
         hexWidth += gap;
-        CreateHexShapedGrid();
-        MakeSpawnTiles();
+        //StartCoroutine("CreateHexShapedGrid");
+        //MakeSpawnTiles();
     }
 
     void CreateRectangularGrid()
@@ -70,7 +81,7 @@ public class HexagonGrid : MonoBehaviour
     [SerializeField]
     private int HexagonGridSize = 2;
 
-    void CreateHexShapedGrid()
+    IEnumerator CreateHexShapedGrid()
     {
         hexagons = new GameObject[HexagonGridSize * 2 + 2, HexagonGridSize * 2 + 2];
         List<Hex> hexes = new List<Hex>();
@@ -94,12 +105,15 @@ public class HexagonGrid : MonoBehaviour
         foreach (Hex hex in hexes)
         {
             Vector3 position = HexPosition(hex);
+            position.y -= 10;
             GameObject newHexagon = Instantiate(Tiles[Random.Range(0, Tiles.Count)], position, HexagonRotation());
             //The hex class is used for instantiating the grid. In the Hexagon class, the IDs of the tiles are stored with the gridsize added because an array couldn't handle 
             //the negative values.
             newHexagon.GetComponent<Hexagon>().q = hex.q + HexagonGridSize;
             newHexagon.GetComponent<Hexagon>().r = hex.r + HexagonGridSize;
             hexagons[hex.q + HexagonGridSize, hex.r + HexagonGridSize] = newHexagon;
+            newHexagon.transform.DOMoveY(0, 0.14f, false);
+            yield return new WaitForSeconds(0.04f);
         }
     }
 

@@ -35,6 +35,8 @@ public class RequirementsClass : MonoBehaviour
         for (int i = 0; i < surroundingObjects.Count; i++)
         {
             HexagonGrid.TileTypes currentTileType = surroundingObjects[i].GetComponent<Hexagon>().tileType;
+            //check if the tile type of the current tile is requested by the challenge. If yes, remove the first entry of it from the 
+            //requestedTilesFloating list so it doesn't trigger the if-statement in the next iteration of the loop.  
             if (requestedTilesFloating.Contains(currentTileType))
             {
                 count++;

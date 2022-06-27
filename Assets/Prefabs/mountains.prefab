@@ -1084,6 +1084,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6551704303857647215}
   - component: {fileID: -5769369581406431307}
+  - component: {fileID: -2316962234826057681}
+  - component: {fileID: 6462937894928647302}
   m_Layer: 0
   m_Name: mountains
   m_TagString: Untagged
@@ -1146,7 +1148,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   q: 0
   r: 0
-  tileType: 5
+  tileType: 3
+--- !u!65 &-2316962234826057681
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5883817632467346645}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.11, y: 1, z: 11.83}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6462937894928647302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5883817632467346645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0fbcade36b06e040b6cb102450ff6a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requestedTiles: 00000000000000000200000001000000
 --- !u!1 &6063799926779065088
 GameObject:
   m_ObjectHideFlags: 0

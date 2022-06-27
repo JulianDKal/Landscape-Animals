@@ -39,7 +39,7 @@ public class Hexagon : MonoBehaviour
             }
             
         }
-        Debug.Log(neighbours.Count);
+        //Debug.Log(neighbours.Count);
         return neighbours;
     }
 }

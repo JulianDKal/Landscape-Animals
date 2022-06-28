@@ -6,15 +6,12 @@ public class GameStateMachine : MonoBehaviour
 {
     GameBaseState currentState;
     
-    public GameObject selectedObject;
-    public Material defaultMaterial;
-    public Material highlightMaterial;
-    public Material selectMaterial;
+    public GameObject selectedAnimal;
     
     void Start()
     {
         // might need another state for setup
-        currentState = new GameInputState(this);
+        currentState = new GameInputState1(this);
 
         currentState.EnterState();
     }

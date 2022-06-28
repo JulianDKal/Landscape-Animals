@@ -31,6 +31,8 @@ public class AnimalManager : MonoBehaviour
     {
         animals = new List<GameObject>();
         StartCoroutine(SpawnAt(AnimalPrefab, 0, 4));
+        StartCoroutine(SpawnAt(AnimalPrefab, 1, 3));
+        StartCoroutine(SpawnAt(AnimalPrefab, 2, 6));
     }
 
 
@@ -43,7 +45,7 @@ public class AnimalManager : MonoBehaviour
         
         GameObject newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
         newAnimal.transform.parent = hex.transform;
-        newAnimal.transform.position += Vector3.up * (animalSize.y + hexHeight) / 2;
+        newAnimal.transform.position = hex.transform.position + Vector3.up * (animalSize.y + hexHeight) / 2;
 
         animals.Add(newAnimal);
     }
@@ -58,29 +60,29 @@ public class AnimalManager : MonoBehaviour
         
         GameObject newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
         newAnimal.transform.parent = hex.transform;
-        newAnimal.transform.position += Vector3.up * (animalSize.y + hexHeight) / 2;
+        newAnimal.transform.position = hex.transform.position + Vector3.up * (animalSize.y + hexHeight) / 2;
 
         animals.Add(newAnimal);
     }
 
-    public void MakeSelectable()
+    public void MakeActors()
     {
         if(animals != null)
         {
             foreach(GameObject animal in animals)
             {
-                animal.tag = "Selectable";
+                animal.layer = LayerMask.NameToLayer("Actor");
             }
         }
     }
 
-    public void MakeUnselectable()
+    public void MakeDefault()
     {
         if(animals != null)
         {
             foreach(GameObject animal in animals)
             {
-                animal.tag = "Untagged";
+                animal.layer = LayerMask.NameToLayer("Default");
             }
         }
     }

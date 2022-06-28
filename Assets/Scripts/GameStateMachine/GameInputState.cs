@@ -32,7 +32,7 @@ public class GameInputState : GameBaseState
         SelectObject();
     }
 
-    void HoverOverObjects()
+    private void HoverOverObjects()
     {
         string selectableTag = "Selectable";
 
@@ -61,7 +61,7 @@ public class GameInputState : GameBaseState
         }
     }
 
-    void SelectObject()
+    private void SelectObject()
     {
         if(currentHover != null && Input.GetMouseButtonDown(0))
         {
@@ -72,11 +72,19 @@ public class GameInputState : GameBaseState
             currentHover = null;
 
             AnimalManager.instance.MakeUnselectable();
-        }
-        else if(Input.GetMouseButtonDown(0))
-        {
 
+            HighlightNeighbors();
         }
+    }
+
+    private void HighlightNeighbors()
+    {
+        Hexagon location = currentSelection.parent.GetComponent<Hexagon>();
+
+        foreach(GameObject neighbour in location.GetNeighbours())
+        {
+            neighbour.GetComponent<Renderer>().material = gsm.highlightMaterial;
+        } 
     }
 
 }

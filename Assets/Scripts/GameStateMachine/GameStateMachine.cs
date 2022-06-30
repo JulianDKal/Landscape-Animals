@@ -7,6 +7,7 @@ public class GameStateMachine : MonoBehaviour
     GameBaseState currentState;
     
     public GameObject selectedAnimal;
+    public GameObject selectedHex;
     
     void Start()
     {

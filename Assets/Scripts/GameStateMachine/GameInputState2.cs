@@ -38,6 +38,7 @@ public class GameInputState2 : GameBaseState
     public override void UpdateState()
     {
         HoverObjects();
+        SelectObject();
         //Deselect() -> go back to input1
     }
 
@@ -80,4 +81,15 @@ public class GameInputState2 : GameBaseState
         }
     }
 
+    private void SelectObject()
+    {
+        if(currentHover != null && Input.GetMouseButtonDown(0))
+        {
+            //make tiles default
+            currentHover.layer = selectMask;
+            gsm.selectedHex = currentHover;
+
+            gsm.SwitchState(new GameMoveState(gsm));
+        }
+    }
 }

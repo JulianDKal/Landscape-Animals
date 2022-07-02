@@ -20,11 +20,10 @@ public class AnimalManager : MonoBehaviour
 
     void Spawn(GameObject prefab)
     {
-        GameObject newAnimal;
         Hex location = new Hex(1, 1, -2);
         Vector3 animalSize = prefab.GetComponent<Renderer>().bounds.size;
         
-        newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        GameObject newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
         newAnimal.transform.position = AnimalPosition(location, animalSize.y);
 
         newAnimal.GetComponent<Animal>().Location = location;

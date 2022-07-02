@@ -1175,6 +1175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requestedTiles: 00000000000000000200000001000000
+  challengeButtonPrefab: {fileID: 622699849276147077, guid: 5dc5785508d2196468d3a7070b61e1dd, type: 3}
+  partnerChallengeButton: {fileID: 0}
 --- !u!1 &6063799926779065088
 GameObject:
   m_ObjectHideFlags: 0

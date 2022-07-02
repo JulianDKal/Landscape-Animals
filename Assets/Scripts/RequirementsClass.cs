@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class RequirementsClass : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class RequirementsClass : MonoBehaviour
     /// </summary>
     [SerializeField]
     private List<HexagonGrid.TileTypes> requestedTiles = new List<HexagonGrid.TileTypes>();
+
+    [SerializeField]
+    private GameObject challengeButtonPrefab;
+
+    public GameObject partnerChallengeButton;
 
     public int TilesFulfilled
     {
@@ -20,6 +26,7 @@ public class RequirementsClass : MonoBehaviour
     {
         Debug.Log("Fulfilled:" + CalculateNumberOfTilesFulfilled() + "/" + requestedTiles.Count);
         Debug.Log(ChallengeIsDone());
+        ChallengeButton();
     }
 
     int CalculateNumberOfTilesFulfilled()
@@ -51,5 +58,22 @@ public class RequirementsClass : MonoBehaviour
     public bool ChallengeIsDone()
     {
         return CalculateNumberOfTilesFulfilled() >= requestedTiles.Count;
+    }
+
+    private void ChallengeButton()
+    {
+        if (partnerChallengeButton == null)
+        {
+            GameObject button = Instantiate(challengeButtonPrefab, GameObject.Find("Canvas").transform, false);
+            //setting the partner hexagon of the button to this object so the button always stays on this hexagon
+            button.GetComponent<ChallengeButtonLogic>().partnerHexagon = gameObject.transform;
+            button.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+            int numOfFulfilled = CalculateNumberOfTilesFulfilled();
+            button.GetComponentInChildren<TMP_Text>().text = numOfFulfilled + "/" + requestedTiles.Count;
+            partnerChallengeButton = button;
+        }
+        //set button active if it isn't, deactivate it if it is active
+        else partnerChallengeButton.SetActive(!partnerChallengeButton.activeSelf);
+        
     }
 }

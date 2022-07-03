@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Random = UnityEngine.Random;
+using TMPro;
+using UnityEngine.UI;
 
 public class HexagonGrid : MonoBehaviour
 {
@@ -17,14 +19,6 @@ public class HexagonGrid : MonoBehaviour
         else
         {
             instance = this;
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            StartCoroutine("CreateHexShapedGrid");
         }
     }
 
@@ -53,6 +47,7 @@ public class HexagonGrid : MonoBehaviour
         hexWidth += gap;
         //StartCoroutine("CreateHexShapedGrid");
         //MakeSpawnTiles();
+        StartCoroutine("CreateHexShapedGrid");
     }
 
     void CreateRectangularGrid()

@@ -8,11 +8,21 @@ public class GameStateMachine : MonoBehaviour
     
     public GameObject selectedAnimal;
     public GameObject selectedHex;
+
+    public LayerMask defMask;
+    public LayerMask actorMask;
+    public LayerMask highlightMask;
+    public LayerMask selectMask;
     
     void Start()
     {
         // might need another state for setup
         currentState = new GameInputState1(this);
+
+        defMask = LayerMask.NameToLayer("Default");
+        actorMask = LayerMask.NameToLayer("Actor");
+        highlightMask = LayerMask.NameToLayer("Highlighted");
+        selectMask = LayerMask.NameToLayer("Selected");
 
         currentState.EnterState();
     }

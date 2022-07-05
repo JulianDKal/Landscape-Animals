@@ -14,9 +14,6 @@ public class GameInputState1 : GameBaseState
         Note: user might deselect (e.g. by clicking on empty tile), which we could achieve by re-entering InputState.
         - OnMouseDown and OnMouseEnter functionality can be implemented in Animal itself
     */
-    private LayerMask actorMask;
-    private LayerMask highlightMask;
-    private LayerMask selectMask;
 
     private float maxDistance = 100f;
     private GameObject currentHover;
@@ -27,10 +24,6 @@ public class GameInputState1 : GameBaseState
     // run at the start of the state
     public override void EnterState()
     {
-        actorMask = LayerMask.NameToLayer("Actor");
-        highlightMask = LayerMask.NameToLayer("Highlighted");
-        selectMask = LayerMask.NameToLayer("Selected");
-
         AnimalManager.instance.MakeActors();
     }
 
@@ -54,16 +47,16 @@ public class GameInputState1 : GameBaseState
             {
                 if(currentHover != null)
                 {
-                    currentHover.layer = actorMask;
+                    currentHover.layer = gsm.actorMask;
                 }
 
                 currentHover = hover;
-                currentHover.layer = highlightMask;
+                currentHover.layer = gsm.highlightMask;
             }
         }
         else if(currentHover != null)
         {
-            currentHover.layer = actorMask;
+            currentHover.layer = gsm.actorMask;
             currentHover = null;
         }
     }
@@ -75,7 +68,7 @@ public class GameInputState1 : GameBaseState
             AnimalManager.instance.MakeDefault();
 
             currentSelection = currentHover;
-            currentSelection.layer = selectMask;
+            currentSelection.layer = gsm.selectMask;
             currentHover = null;
 
             gsm.selectedAnimal = currentSelection;

@@ -121,4 +121,15 @@ public class HexagonGrid : MonoBehaviour
     {
         return hexagons[q, r];
     }
+
+    public void MakeDefault()
+    {
+        foreach(GameObject hex in hexagons)
+        {
+            if(hex != null)
+            {
+                hex.layer = LayerMask.NameToLayer("Default");
+            }
+        }
+    }
 }

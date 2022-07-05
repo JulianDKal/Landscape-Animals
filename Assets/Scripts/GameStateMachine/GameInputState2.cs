@@ -3,20 +3,9 @@ using UnityEngine;
 public class GameInputState2 : GameBaseState
 {
     /*
-        - All animals become selectable
-            - Highlight on mouse hover
-            - Select on mouse click
-        - When animal gets selected, record that animal in gsm
-        - All animals become unselectable
-        - Show possible tiles to move to (check if legal) based on animal grid location, make them selectable
-        - When selected, record in gsm and switch to MoveState
-
-        Note: user might deselect (e.g. by clicking on empty tile), which we could achieve by re-entering InputState.
-        - OnMouseDown and OnMouseEnter functionality can be implemented in Animal itself
+        - Starts of with animal selected
+        - Gives player an option to pick a destination tile
     */
-    private LayerMask actorMask;
-    private LayerMask highlightMask;
-    private LayerMask selectMask;
 
     private float maxDistance = 100f;
     private GameObject currentHover;
@@ -27,10 +16,6 @@ public class GameInputState2 : GameBaseState
     // run at the start of the state
     public override void EnterState()
     {
-        actorMask = LayerMask.NameToLayer("Actor");
-        highlightMask = LayerMask.NameToLayer("Highlighted");
-        selectMask = LayerMask.NameToLayer("Selected");
-
         HighlightNeighbors();
     }
 
@@ -48,7 +33,7 @@ public class GameInputState2 : GameBaseState
 
         foreach(GameObject neighbour in location.GetNeighbours())
         {
-            neighbour.layer = actorMask;
+            neighbour.layer = gsm.actorMask;
         } 
     }
 
@@ -67,16 +52,16 @@ public class GameInputState2 : GameBaseState
             {
                 if(currentHover != null) //dehighlight if it's not null
                 {
-                    currentHover.layer = actorMask;
+                    currentHover.layer = gsm.actorMask;
                 }
 
                 currentHover = hover;
-                currentHover.layer = highlightMask;
+                currentHover.layer = gsm.highlightMask;
             }
         }
         else if(currentHover != null) //if we haven't hit an object
         {
-            currentHover.layer = actorMask; //dehighlight
+            currentHover.layer = gsm.actorMask; //dehighlight
             currentHover = null;
         }
     }
@@ -85,8 +70,9 @@ public class GameInputState2 : GameBaseState
     {
         if(currentHover != null && Input.GetMouseButtonDown(0))
         {
-            //make tiles default
-            currentHover.layer = selectMask;
+            HexagonGrid.instance.MakeDefault();
+            AnimalManager.instance.MakeDefault();
+
             gsm.selectedHex = currentHover;
 
             gsm.SwitchState(new GameMoveState(gsm));

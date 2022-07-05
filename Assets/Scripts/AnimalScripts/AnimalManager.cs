@@ -58,11 +58,18 @@ public class AnimalManager : MonoBehaviour
         Vector3 animalSize = prefab.GetComponent<Renderer>().bounds.size;
         GameObject hex = HexagonGrid.instance.GetHexagon(q, r);
         
-        GameObject newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
-        newAnimal.transform.parent = hex.transform;
-        newAnimal.transform.position = hex.transform.position + Vector3.up * (animalSize.y + hexHeight) / 2;
+        if(hex != null)
+        {
+            GameObject newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+            newAnimal.transform.parent = hex.transform;
+            newAnimal.transform.position = hex.transform.position + Vector3.up * (animalSize.y + hexHeight) / 2;
 
-        animals.Add(newAnimal);
+            animals.Add(newAnimal);
+        }
+        else
+        {
+            Debug.LogWarning("Acessing null hexagon!");
+        }
     }
 
     public void MakeActors()

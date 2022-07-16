@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterMat
-  m_Shader: {fileID: -6465566751694194690, guid: 224a12f3ba2f5f54da29da3f00005dcf, type: 3}
+  m_Name: PortalMat
+  m_Shader: {fileID: -6465566751694194690, guid: b90d29efeaede42489a7202a2779f71b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -33,5 +33,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats: []
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 0.9150943, g: 0.75871265, b: 0, a: 0}
   m_BuildTextureStacks: []

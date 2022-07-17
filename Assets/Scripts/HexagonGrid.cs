@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Random = UnityEngine.Random;
-using TMPro;
-using UnityEngine.UI;
 
 public class HexagonGrid : MonoBehaviour
 {
@@ -45,8 +42,6 @@ public class HexagonGrid : MonoBehaviour
     {
         hexHeight += gap;
         hexWidth += gap;
-        //StartCoroutine("CreateHexShapedGrid");
-        //MakeSpawnTiles();
         StartCoroutine("CreateHexShapedGrid");
     }
 
@@ -110,6 +105,7 @@ public class HexagonGrid : MonoBehaviour
             newHexagon.transform.DOMoveY(0, 0.14f, false);
             yield return new WaitForSeconds(0.04f);
         }
+        MakeSpawnTiles();
     }
 
     Vector3 HexPosition(Hex hex)

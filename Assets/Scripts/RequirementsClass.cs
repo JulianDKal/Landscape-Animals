@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using DG.Tweening;
 
 public class RequirementsClass : MonoBehaviour
 {
@@ -22,10 +24,14 @@ public class RequirementsClass : MonoBehaviour
         set { return; }
     }
 
-    private void OnMouseDown()
+    private void OnMouseEnter()
     {
         Debug.Log("Fulfilled:" + CalculateNumberOfTilesFulfilled() + "/" + requestedTiles.Count);
-        Debug.Log(ChallengeIsDone());
+        ChallengeButton();
+    }
+
+    private void OnMouseExit()
+    {
         ChallengeButton();
     }
 
@@ -65,6 +71,8 @@ public class RequirementsClass : MonoBehaviour
         if (partnerChallengeButton == null)
         {
             GameObject button = Instantiate(challengeButtonPrefab, GameObject.Find("Canvas").transform, false);
+            button.transform.localScale = new Vector3(0, 0, 0);
+            button.transform.DOScale(new Vector3(1, 1, 1), 0.3f);
             //setting the partner hexagon of the button to this object so the button always stays on this hexagon
             button.GetComponent<ChallengeButtonLogic>().partnerHexagon = gameObject.transform;
             button.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(gameObject.transform.position);

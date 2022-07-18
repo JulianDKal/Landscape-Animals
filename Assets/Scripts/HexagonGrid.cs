@@ -138,11 +138,11 @@ public class HexagonGrid : MonoBehaviour
     
     public enum TileTypes
     {
+        SpawnTile,
+        Empty,
         Forest,
         Grasslands,
         Water,
-        Mountains,
-        SpawnTile,
-        Empty
+        Mountains
     }
 }

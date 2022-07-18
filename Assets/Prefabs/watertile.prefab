@@ -2702,7 +2702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   q: 0
   r: 0
-  tileType: 2
+  tileType: 4
 --- !u!23 &3600520995730143948
 MeshRenderer:
   m_ObjectHideFlags: 0

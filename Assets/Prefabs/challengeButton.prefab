@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partnerHexagon: {fileID: 0}
-  yOffset: 90
+  yOffset: 70
 --- !u!1 &622699849707520775
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class GameMoveState : GameBaseState
         destination = gsm.selectedHex.GetComponent<Hexagon>();
         
         //animate rotating the animal
+        animal.RotateTo(destination.q, destination.r);
         //animate moving the animal to another tile
         animal.MoveTo(destination.q, destination.r);
 

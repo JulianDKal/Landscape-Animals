@@ -40,4 +40,9 @@ public class Hexagon : MonoBehaviour
         Debug.Log(neighbours.Count);
         return neighbours;
     }
+
+    public int GetDirection(int q_dest, int r_dest)
+    {
+        return System.Array.IndexOf(directionVectors, new Vector2(q_dest - q, r_dest - r));
+    }
 }

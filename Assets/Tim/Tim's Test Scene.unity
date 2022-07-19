@@ -155,10 +155,13 @@ MonoBehaviour:
   hexWidth: 13.6427
   hexHeight: 11.815
   gap: 0
-  HexagonObj: {fileID: 8205552786942500829, guid: b2beabc4dcef91841987fe953fc4734f, type: 3}
   gridLength: 7
   gridHeight: 7
   haveRandomRotation: 1
+  spawnTilePositions: []
+  spawnTile: {fileID: 10163928110717401, guid: 5dad482732f58a84e88c3b9996221b95, type: 3}
+  Tiles:
+  - {fileID: 8205552786942500829, guid: b2beabc4dcef91841987fe953fc4734f, type: 3}
   HexagonGridSize: 4
 --- !u!4 &79482862
 Transform:
@@ -389,6 +392,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedAnimal: {fileID: 0}
+  selectedHex: {fileID: 0}
+  defMask:
+    serializedVersion: 2
+    m_Bits: 0
+  actorMask:
+    serializedVersion: 2
+    m_Bits: 0
+  highlightMask:
+    serializedVersion: 2
+    m_Bits: 0
+  selectMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &1292985753
 Transform:
   m_ObjectHideFlags: 0

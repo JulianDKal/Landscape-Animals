@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Hex
 {
-
     public Hex(int q, int r, int s)
     {
         if (q + r + s == 0)

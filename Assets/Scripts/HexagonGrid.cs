@@ -145,4 +145,20 @@ public class HexagonGrid : MonoBehaviour
         SpawnTile,
         Empty
     }
+
+    public GameObject GetHexagon(int q, int r)
+    {
+        return hexagons[q, r];
+    }
+
+    public void MakeDefault()
+    {
+        foreach(GameObject hex in hexagons)
+        {
+            if(hex != null)
+            {
+                hex.layer = LayerMask.NameToLayer("Default");
+            }
+        }
+    }
 }

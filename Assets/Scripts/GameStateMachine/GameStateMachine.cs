@@ -6,21 +6,23 @@ public class GameStateMachine : MonoBehaviour
 {
     GameBaseState currentState;
     
-    //all managers and systems references 
-    public GameObject GridInstObject;
-    public GameObject AnimalManagerObject;
-    public HexagonGrid HexGrid {get; set;}
-    public AnimalManager AnimalManager {get; set;}
+    public GameObject selectedAnimal;
+    public GameObject selectedHex;
 
-    public Material defaultMaterial;
-    public Material highlightMaterial;
+    public LayerMask defMask;
+    public LayerMask actorMask;
+    public LayerMask highlightMask;
+    public LayerMask selectMask;
     
     void Start()
     {
         // might need another state for setup
-        currentState = new GameInputState(this);
-        HexGrid = GridInstObject.GetComponent<HexagonGrid>();
-        AnimalManager = AnimalManagerObject.GetComponent<AnimalManager>();
+        currentState = new GameInputState1(this);
+
+        defMask = LayerMask.NameToLayer("Default");
+        actorMask = LayerMask.NameToLayer("Actor");
+        highlightMask = LayerMask.NameToLayer("Highlighted");
+        selectMask = LayerMask.NameToLayer("Selected");
 
         currentState.EnterState();
     }

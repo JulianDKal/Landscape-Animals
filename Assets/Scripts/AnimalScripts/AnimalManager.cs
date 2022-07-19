@@ -1,58 +1,100 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class AnimalManager : MonoBehaviour
 {
-    public GameObject AnimalPrefab; // animal available to instantiate
+    public static AnimalManager instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+
+    public GameObject AnimalPrefab; // animals available to instantiate
     private List<GameObject> animals; // reference to instantiated animals
 
     // hardcoded for now
     private const float hexWidth = 13.64f;
-    private const float hexHeight = 1.5f;
+    private const float hexHeight = 1.9f;
     
 
     void Start()
     {
         animals = new List<GameObject>();
-        Spawn(AnimalPrefab);
+        StartCoroutine(SpawnAt(AnimalPrefab, 0, 4));
+        StartCoroutine(SpawnAt(AnimalPrefab, 1, 3));
+        StartCoroutine(SpawnAt(AnimalPrefab, 2, 6));
     }
 
-    void Spawn(GameObject prefab)
+
+    public IEnumerator SpawnAt(GameObject prefab, Hexagon hex)
     {
-        Hex location = new Hex(1, 1, -2);
+        //probably should check if given hex belongs to the grid
+        yield return new WaitUntil(() => HexagonGrid.instance.hexagons != null);
+
         Vector3 animalSize = prefab.GetComponent<Renderer>().bounds.size;
         
         GameObject newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
-        newAnimal.transform.position = AnimalPosition(location, animalSize.y);
-
-        newAnimal.GetComponent<Animal>().Location = location;
+        newAnimal.transform.parent = hex.transform;
+        newAnimal.transform.position = hex.transform.position + Vector3.up * (animalSize.y + hexHeight) / 2;
 
         animals.Add(newAnimal);
     }
 
-    public void MakeSelectable()
+
+    public IEnumerator SpawnAt(GameObject prefab, int q, int r)
+    {
+        yield return new WaitUntil(() => HexagonGrid.instance.hexagons != null);
+
+        Vector3 animalSize = prefab.GetComponent<Renderer>().bounds.size;
+        GameObject hex = HexagonGrid.instance.GetHexagon(q, r);
+        
+        if(hex != null)
+        {
+            GameObject newAnimal = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+            newAnimal.transform.parent = hex.transform;
+            newAnimal.transform.position = hex.transform.position + Vector3.up * (animalSize.y + hexHeight) / 2;
+
+            animals.Add(newAnimal);
+        }
+        else
+        {
+            Debug.LogWarning("Acessing null hexagon!");
+        }
+    }
+
+    public void MakeActors()
     {
         if(animals != null)
         {
             foreach(GameObject animal in animals)
             {
-                animal.tag = "Selectable";
+                animal.layer = LayerMask.NameToLayer("Actor");
             }
         }
     }
 
-    public void MakeUnselectable()
+    public void MakeDefault()
     {
         if(animals != null)
         {
             foreach(GameObject animal in animals)
             {
-                animal.tag = "Untagged";
+                animal.layer = LayerMask.NameToLayer("Default");
             }
         }
     }
 
+    /*
     private Vector3 AnimalPosition(Hex location, float animalHeight)
     {
         Vector3 position = Vector3.zero;
@@ -63,4 +105,5 @@ public class AnimalManager : MonoBehaviour
 
         return position;
     }
+    */
 }

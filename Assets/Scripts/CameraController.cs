@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
+    
 
     private void Awake()
     {
@@ -49,7 +50,7 @@ public class CameraController : MonoBehaviour
     #endregion
 
     Vector3 newPosition;
-
+    Vector3 startPosition;
     Vector3 dragStartPosition;
     Vector3 dragCurrentPosition;
 
@@ -59,6 +60,7 @@ public class CameraController : MonoBehaviour
         newRotation = transform.rotation;
         cam = Camera.main.transform;
         zoomPos = cam.localPosition;
+        startPosition = transform.position;
     }
 
     void Update()
@@ -69,8 +71,11 @@ public class CameraController : MonoBehaviour
         newPosition += horizontal * movementSpeed * Time.deltaTime * new Vector3(cam.right.x, 0, cam.right.z);
         newPosition += vertical * movementSpeed * Time.deltaTime * new Vector3(cam.forward.x, 0, cam.forward.z);
 
+        //moving the camera to the calculated new Position, but checking first that 
+        //the new position isn't too far away from the board
+        Debug.Log(transform.position.magnitude);
+        if(CanMove(transform.position, newPosition))
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * slidingEffect);
-        //Debug.Log(cam.forward + "," + cam.right);
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -120,8 +125,17 @@ public class CameraController : MonoBehaviour
 
     public void MoveCameraToObject(Vector3 targetPosition)
     {
+        if(targetPosition.magnitude <= 26)
+
         newPosition = targetPosition;
             //Vector3.Lerp(gameObject.transform.position, targetPosition, Time.deltaTime * 3);
         
+    }
+
+    public bool CanMove(Vector3 cameraPos, Vector3 targetPos)
+    {
+        if (cameraPos.magnitude <= 40) return true;
+        else if (targetPos.magnitude <= 40) return true;
+        else return false;
     }
 }

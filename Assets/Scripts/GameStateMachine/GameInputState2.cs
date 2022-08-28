@@ -76,7 +76,8 @@ public class GameInputState2 : GameBaseState
 
             gsm.selectedHex = currentHover;
 
-            gsm.SwitchState(new GameMoveState(gsm));
+            if (gsm.selectedAnimal.GetComponent<Animal>().alreadyMoved) gsm.SwitchState(new GameInputState1(gsm));
+            else gsm.SwitchState(new GameMoveState(gsm));
         }
     }
 }

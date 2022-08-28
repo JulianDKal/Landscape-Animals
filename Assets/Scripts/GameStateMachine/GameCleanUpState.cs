@@ -16,6 +16,11 @@ public class GameCleanUpState : GameBaseState
     // run at the start of the state
     public override void EnterState()
     {
+        //resetting the animal movements
+        foreach (GameObject animal in AnimalManager.instance.animals)
+        {
+            animal.GetComponent<Animal>().alreadyMoved = false;
+        }
         gsm.SwitchState(new GameInputState1(gsm));
     }
 

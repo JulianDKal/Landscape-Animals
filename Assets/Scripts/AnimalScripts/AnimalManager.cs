@@ -20,8 +20,7 @@ public class AnimalManager : MonoBehaviour
 
 
     public GameObject AnimalPrefab; // animals available to instantiate
-    private List<GameObject> animals; // reference to instantiated animals
-
+    public List<GameObject> animals; // reference to instantiated animals
     // hardcoded for now
     private const float hexWidth = 13.64f;
     private const float hexHeight = 1.9f;

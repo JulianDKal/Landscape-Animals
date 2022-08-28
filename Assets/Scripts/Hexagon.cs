@@ -19,7 +19,7 @@ public class Hexagon : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GetNeighbours();
+        //GetNeighbours();
         CameraController.instance.MoveCameraToObject(gameObject.transform.position);
     }
 

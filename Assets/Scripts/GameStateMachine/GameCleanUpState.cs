@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameCleanUpState : GameBaseState
 {
-
     /*
         - Remove animals that used their moves (or until some other condition is met)
         - Spawn new animals if needed
@@ -17,6 +16,7 @@ public class GameCleanUpState : GameBaseState
     // run at the start of the state
     public override void EnterState()
     {
+        gsm.SwitchState(new GameInputState1(gsm));
     }
 
     // run every frame during the state

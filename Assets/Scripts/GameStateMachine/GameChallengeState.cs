@@ -14,10 +14,11 @@ public class GameChallengeState : GameBaseState
 
     public GameChallengeState(GameStateMachine gsm) : base(gsm) {}
 
-    // run at the start of the state
     public override void EnterState()
     {
-
+        //invoke the event which triggers all the challenge hexagons to see if their quest is fulfilled
+        //...
+        gsm.SwitchState(new GameCleanUpState(gsm));
     }
 
     // run every frame during the state

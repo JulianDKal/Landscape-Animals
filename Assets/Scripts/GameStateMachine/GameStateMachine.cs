@@ -32,6 +32,7 @@ public class GameStateMachine : MonoBehaviour
     {
         // runs every frame
         currentState.UpdateState();
+        //Debug.Log(currentState);
     }
 
     
@@ -40,7 +41,19 @@ public class GameStateMachine : MonoBehaviour
         //currentState.ExitState();
 
         currentState = newState;
-
+        //Debug.Log(currentState);
         newState.EnterState();
     }
+
+    public void EndTurn()
+    {
+        turnEnded.Invoke();
+        SwitchState(new GameChallengeState(this));
+    }
+
+    public delegate void TurnEnded();
+    public static event TurnEnded turnEnded;
+
+    public delegate void QuestFulfilled();
+    public static event QuestFulfilled questFulfilled;
 }

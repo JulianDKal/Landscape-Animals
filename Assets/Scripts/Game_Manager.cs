@@ -7,6 +7,8 @@ public class Game_Manager : MonoBehaviour
     public static Game_Manager instance;
 
     public static bool gameIsPaused = false;
+    public int turnCount;
+    public int pointCount;
 
     private void Awake()
     {

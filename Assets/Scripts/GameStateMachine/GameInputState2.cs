@@ -25,6 +25,7 @@ public class GameInputState2 : GameBaseState
         HoverObjects();
         SelectObject();
         //Deselect() -> go back to input1
+
     }
 
     private void HighlightNeighbors()

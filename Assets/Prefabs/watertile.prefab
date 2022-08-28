@@ -2635,6 +2635,7 @@ GameObject:
   - component: {fileID: -7682029674201472378}
   - component: {fileID: 3600520995730143948}
   - component: {fileID: 4794957354682313403}
+  - component: {fileID: 8370687025048191249}
   m_Layer: 4
   m_Name: watertile
   m_TagString: Untagged
@@ -2753,6 +2754,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9033095077895427796}
   m_Mesh: {fileID: 0}
+--- !u!65 &8370687025048191249
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033095077895427796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 1, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9181971103420167742
 GameObject:
   m_ObjectHideFlags: 0

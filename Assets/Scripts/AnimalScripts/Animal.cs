@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class Animal : MonoBehaviour
 {
+    public GameObject relatedHexagon;
+    public HexagonGrid.TileTypes unaccessableHexagons = HexagonGrid.TileTypes.None;
+
     private float hexHeight = 3f;
+    public bool alreadyMoved = false;
 
     public void MoveTo(int q, int r)
     {

@@ -136,6 +136,7 @@ public class HexagonGrid : MonoBehaviour
         }
     }
     
+    [System.Serializable]
     public enum TileTypes
     {
         SpawnTile,
@@ -143,7 +144,8 @@ public class HexagonGrid : MonoBehaviour
         Forest,
         Grasslands,
         Water,
-        Mountains
+        Mountains,
+        None
     }
 
     public GameObject GetHexagon(int q, int r)

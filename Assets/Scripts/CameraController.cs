@@ -73,7 +73,6 @@ public class CameraController : MonoBehaviour
 
         //moving the camera to the calculated new Position, but checking first that 
         //the new position isn't too far away from the board
-        Debug.Log(transform.position.magnitude);
         if(CanMove(transform.position, newPosition))
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * slidingEffect);
 

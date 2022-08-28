@@ -35,7 +35,7 @@ public class RequirementsClass : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("Fulfilled:" + CalculateNumberOfTilesFulfilled() + "/" + _requestedTiles.Count);
+        //Debug.Log("Fulfilled:" + CalculateNumberOfTilesFulfilled() + "/" + _requestedTiles.Count);
         ChallengeButton();
     }
 

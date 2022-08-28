@@ -23,7 +23,6 @@ public class ChallengeButtonLogic : MonoBehaviour
         _transform.position = _camera.WorldToScreenPoint(partnerHexagon.position) +
                               //fixing the issue that buttons further away from the camera spawn too high
                               (Vector3.up * (yOffset * Mathf.InverseLerp(200, 40, distanceFromCamera)));
-        //Debug.Log(Mathf.InverseLerp(140, 40, distanceFromCamera));
         
     }
 

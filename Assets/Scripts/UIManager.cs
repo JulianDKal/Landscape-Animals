@@ -79,6 +79,11 @@ public class UIManager : MonoBehaviour
         threshold = -0.1f;
     }
 
+    private void NextTurn()
+    {
+
+    }
+
     private void Update()
     {
         threshold += Time.deltaTime * transitionSpeed;
